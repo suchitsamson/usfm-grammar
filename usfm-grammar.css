@@ -1,0 +1,339 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif
+  }
+
+  .top1 {
+    background-color: #0888c3;
+    padding: 0px 0px;
+    width: 100%;
+    float: left;
+  }
+
+  .logo img {
+    width: 14%;
+    max-width: 13%;
+    padding: 0px;
+    margin: 0px;
+    float: left;
+
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  textarea:focus {
+    outline: 0px !important;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .git {
+    width: 14%;
+  }
+
+  .top1 h2 {
+    margin: auto;
+    padding: 8px 0px 0px 0px;
+    color: #fff;
+    width: 20%;
+    text-align: center;
+  }
+
+  .box1 {
+    float: left;
+    width: 40%;
+    height: 100%;
+    margin: 0px;
+    border: 1px solid #dcdada
+  }
+
+  .box1-top {
+    margin: 0px;
+    padding: 11px 7px;
+    background-color: #dededeb5;
+  }
+
+  .box1-top button {
+    font-size: 16px;
+    background-color: #0888c3;
+    color: #fff;
+    border: none;
+    float: right;
+    padding: 6px 8px;
+    margin-top: -5px;
+    margin-right: 20px;
+  }
+
+  .box1-top1 {
+    margin: 0px;
+    padding: 12px 7px;
+    background-color: #dededeb5;
+  }
+
+  .box1-top1-button {
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    float: right;
+    padding: 6px 8px;
+    margin-top: 5px;
+    margin-right: 20px;
+  }
+
+  .box1-content textarea {
+    border: none;
+    overflow-y: scroll;
+    height: 450px;
+    max-height: 450px;
+    width: 98%;
+    padding: 10px 0px 0px 12px;
+    font-size: 18px;
+  }
+
+  .box2 {
+    float: right;
+    width: 40%;
+    height: 510px;
+    padding: 0px;
+    border: 1px solid #dcdada;
+  }
+
+  .box2-content {
+    float: right;
+    width: 100%;
+    height: 460px;
+    overflow-y: scroll;
+    padding: 0px;
+
+  }
+
+  .boxcenter {
+    float: left;
+    width: 15%;
+    margin-top: 10px;
+    color: #fff;
+    border: none;
+    display: block;
+  }
+
+  .btn {
+    font-size: 18px;
+    padding: 5px 5px;
+    display: block;
+    margin: 0% 0%;
+    width: 100%;
+    background-color: #0888c3;
+    color: #fff;
+    border: none;
+  }
+
+  .boxcenter-top {
+    margin: 50% 15%;
+    width: 100%;
+    display: block;
+    border: 1px solid #0888c3;
+  }
+
+  .boxcenter-bottom {
+    margin: 50% 15%;
+    width: 100%;
+    display: block;
+    border: 1px solid #0888c3;
+  }
+
+  select {
+    font-size: 18px;
+    padding: 5px 5px;
+    width: 100%;
+    border: 1px solid #0888c3;
+    color: #000;
+  }
+
+  .box2-content textarea {
+    border: none;
+    overflow-y: scroll;
+    height: 450px;
+    max-height: 450px;
+    width: 98%;
+    padding: 10px 0px 0px 12px;
+    font-size: 18px;
+  }
+
+  .box2-error {
+    float: left;
+    width: 40%;
+    height: 210px;
+    padding: 0px;
+    border: 1px solid #dcdada;
+  }
+
+  .box2-error textarea {
+    border: none;
+    overflow-y: scroll;
+    height: 50%;
+    max-height: 200px;
+    width: 98%;
+    padding: 10px 0px 0px 12px;
+    font-size: 18px;
+  }
+
+  .box1-error {
+    float: right;
+    width: 40%;
+    margin-left: 40%;
+    height: 210px;
+    padding: 0px;
+    border: 1px solid #dcdada;
+  }
+
+  .box1-error textarea {
+    border: none;
+    overflow-y: scroll;
+    height: 50%;
+    max-height: 200px;
+    width: 98%;
+    padding: 10px 0px 0px 12px;
+    font-size: 18px;
+  }
+
+  .tab {
+    overflow: hidden;
+    background-color: #dededeb5;
+    margin: 0px;
+  }
+
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .submit-progress-bg {
+    background-color: lightgray;
+    opacity: .5;
+  }
+
+  .submit-progress {
+  padding: 1em;
+  width: 23em;
+  background-color: black;
+  color: white;
+  }
+  
+  .submit-progress i {
+    margin-right: 0.5em;
+  }
+
+  @media only screen and (min-width: 1440px) {
+
+    /* styles for browsers larger than 1440px; */
+    .box1-content textarea {
+      border: none;
+      overflow-y: scroll;
+      height: 650px;
+      max-height: 630px;
+      width: 98%;
+      padding: 10px 0px 0px 12px;
+      font-size: 18px;
+
+
+    }
+
+    .box2 {
+      float: right;
+      width: 40%;
+      height: 688px;
+      overflow-y: scroll;
+      padding: 0px;
+      border: 1px solid #dcdada
+    }
+
+    .box2-content {
+      float: right;
+      height: 645px;
+
+    }
+
+    .box2-content textarea {
+      border: none;
+      overflow-y: scroll;
+      height: 650px;
+      max-height: 630px;
+      width: 98.5%;
+      padding: 10px 0px 0px 12px;
+      font-size: 18px;
+
+
+    }
+  }
+
+  @media only screen and (min-width: 2000px) {
+
+    /* for sumo sized (mac) screens */
+    .box1-content textarea {
+      border: none;
+      overflow-y: scroll;
+      height: 720px;
+      max-height: 720px;
+      width: 99%;
+      padding: 10px 0px 0px 12px;
+      font-size: 18px;
+
+
+    }
+
+    .box2 {
+      float: right;
+      width: 40%;
+      height: 773px;
+      overflow-y: scroll;
+      padding: 0px;
+      border: 1px solid #dcdada
+    }
+
+    .box2-content {
+      float: right;
+      height: 740px;
+
+    }
+
+    .box2-content textarea {
+      border: none;
+      overflow-y: scroll;
+      height: 720px;
+      max-height: 720px;
+      width: 99%;
+      padding: 10px 0px 0px 12px;
+      font-size: 18px;
+
+
+    }
+  }

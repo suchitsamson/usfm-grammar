@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<title>USFM Grammar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="ui/usfm-grammar.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="json-viewer/jquery.json-viewer.js"></script>
+  <script src="ui/usfm-grammar.js"></script>
+</head>
+
+<body onload="pageLoad()">
+  <div class="top1">
+    <div class="logo">
+      <img src="img/bcs_logo.png"></div>
+    <h2>
+      <a href="https://github.com/Bridgeconn/usfm-grammar" style="color: #fff;" target=" _blank"><i class="fa fa-github"
+          style="font-size:36px"></i></a>&nbsp;&nbsp;USFM Grammar
+    </h2>
+  </div>
+
+  <div class="box1">
+    <div class="box1-top">
+      <i class="fa fa-code" style="font-size:20px"></i>&nbsp;USFM
+      <button style="font-size:18px;background-color: #29769a;color:#fff;border:none;padding: 5px 8px"
+        onclick="downloadUSFM();"><i class="fa fa-download"></i>
+      </button>
+      <button style="font-size:18px;background-color: #29769a;color:#fff;border:none;padding: 5px 8px"
+        onclick="{$('#fileuploadUSFM').click();}"><i class="fa fa-upload"></i>
+      </button>
+    </div>
+    <div class="box1-content">
+      <textarea name="inputText" id="inputText" form="inputTextForm1" style="font-size:15px">${usfm_val}</textarea>
+    </div>
+  </div>
+
+  <p id="active-element" style="display: none;">${selectedTab}</p>
+
+  <p id="selectScripture" style="display: none;">${selectedScripture}</p>
+
+  <p id="selectType" style="display: none;">${selectedType}</p>
+
+
+  <div class="boxcenter">
+    <form id="inputTextForm1" action="convertJSON" method="post" enctype="multipart/form-data">
+      <div class="boxcenter-top">
+        <select id="parseSelect" name="parseSelect" form="inputTextForm1">
+          <option value="A">All</option>
+          <option value="S">Scripture</option>
+        </select>
+
+        <select id="parseType" name="parseType" form="inputTextForm1">
+          <option value="N">Normal</option>
+          <option value="R">Relaxed</option>
+        </select>
+
+        <button type="submit" value="" action="convertJSON" class="btn"
+          onclick="return DisplayProgressMessage(this, 'Converting...');">
+          JSON <i class="fa fa-chevron-right"></i></button>
+      </div>
+    </form>
+
+    <form id="inputTextForm2" action="convertUSFM" method="post" enctype="multipart/form-data">
+      <div class="boxcenter-bottom">
+        <button id="toUSFM" type="submit" value="" action="convertUSFM" class="btn">
+          <i class="fa fa-chevron-left"></i> USFM </button>
+      </div>
+    </form>
+
+    <div class="submit-progress hidden">
+      <i class="fa fa-2x fa-spinner fa-spin"></i>
+      <label>Please wait...</label>
+    </div>
+
+  </div>
+
+
+  <div class="box2">
+    <div class="tab">
+      <form id="inputTextForm5">
+        <button id="toJSON" type="reset" value="" onclick="openTab('abc', 'jsonContent')" class="tablinks">
+          <i class="fa fa-code" style="font-size:20px"></i>&nbsp;JSON </button>
+      </form>
+      <form id="inputTextForm3" action="convertCSV" method="post" enctype="multipart/form-data">
+        <textarea name="inputTextCSV" id="inputTextCSV" form="inputTextForm3"
+          style="display: none;">${usfm_val}</textarea>
+        <button id="toCSV" type="submit" value="" action="convertCSV" class="tablinks"
+          onclick="return DisplayProgressMessage(this, 'CSV');">
+          CSV </button>
+      </form>
+      <form id="inputTextForm4" action="convertTSV" method="post" enctype="multipart/form-data">
+        <textarea name="inputTextTSV" id="inputTextTSV" form="inputTextForm4"
+          style="display: none;">${usfm_val}</textarea>
+        <button id="toTSV" type="submit" value="" action="convertTSV" class="tablinks"
+          onclick="return DisplayProgressMessage(this, 'TSV');">
+          TSV </button>
+      </form>
+      <button id="download" class="box1-top1-button"
+        style="font-size:18px;background-color: #29769a;color:#fff;border:none;padding: 5px 8px; float: right;"
+        onclick="downloadJSON();"><i class="fa fa-download"></i>
+      </button>
+      <button id="upload" class="box1-top1-button"
+        style="font-size:18px;background-color: #29769a;color:#fff;border:none;padding: 5px 8px; float: right;"
+        onclick="{$('#fileuploadJSON').click();}"><i class="fa fa-upload"></i>
+      </button>
+    </div>
+
+    <div id="jsonContent" class="box2-content" style="display:none;">
+      <textarea name="inputTextJSON" id="inputTextJSON" form="inputTextForm2"
+        style="font-size:15px">${json_val}</textarea>
+    </div>
+    <div id="csvContent" class="box2-content" style="display:none;">
+      <textarea name="inputTextCSV" id="inputTextCSV" form="inputTextForm2" style="font-size:15px">${csv_val}</textarea>
+    </div>
+    <div id="tsvContent" class="box2-content" style="display:none;">
+      <textarea name="inputTextTSV" id="inputTextTSV" form="inputTextForm2" style="font-size:15px">${tsv_val}</textarea>
+    </div>
+
+    <script type="text/javascript">
+
+    </script>
+  </div>
+  <div id="box1_error" class="box1-error">
+    <div class="box1-top1">
+      <i class="fa fa-code" style="font-size:20px"></i>&nbsp;ERROR
+    </div>
+    <textarea id="box1_error_content" style="font-size:15px">${lhs_error}</textarea>
+  </div>
+
+  <div id="box2_error" class="box2-error">
+    <div class="box1-top1">
+      <i class="fa fa-code" style="font-size:20px"></i>&nbsp;ERROR
+    </div>
+    <textarea id="box2_error_content" style="font-size:15px">${rhs_error}</textarea>
+  </div>
+
+  <script type="text/javascript">
+
+  </script>
+
+
+  <div style="width: 100%; margin:auto;">
+    <form id="inputFileForm" action="fileuploadUSFM" method="post" enctype="multipart/form-data">
+      <input type="file" id="fileuploadUSFM" name="filepath" value="" onchange="this.form.submit()"
+        style="display: none;" />
+    </form>
+  </div>
+  <div style="width: 100%; margin:auto;">
+    <form id="inputFileForm" action="fileuploadJSON" method="post" enctype="multipart/form-data">
+      <input type="file" id="fileuploadJSON" name="filepath" value="" onchange="this.form.submit()"
+        style="display: none;" Œ />
+    </form>
+  </div>
+</body>
+<link href="json-viewer/jquery.json-viewer.css" type="text/css" rel="stylesheet" />
+
+</html>
